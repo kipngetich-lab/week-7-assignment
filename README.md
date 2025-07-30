@@ -30,8 +30,8 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/kipngetich-lab/TukoShop-App.git
-   cd TukoShop-App
+   git clone https://github.com/kipngetich-lab/week-7-assignment.git
+   cd week-7-assignment
    ```
 
 2. Install dependencies:
