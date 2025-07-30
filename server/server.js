@@ -4,6 +4,9 @@ const morgan = require('morgan')
 const colors = require('colors')
 const cors = require('cors')
 const connectDB = require('./config/db')
+const path = require('path')
+
+const currentDir= path.resolve();
 
 // Load env vars
 dotenv.config()
@@ -31,6 +34,14 @@ if (process.env.NODE_ENV === 'development') {
 // Mount routers
 app.use('/api/auth', authRoutes)
 app.use('/api/tasks', taskRoutes)
+
+//production
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static(path.join(currentDir,"/client/dist")));
+	app.get("*",(req,res)=>{
+		res.sendFile(path.resolve(currentDir,"client","dist","index.html"));
+	})
+}
 
 // Error handling middleware
 const { errorHandler } = require('./middleware/errorHandler')
